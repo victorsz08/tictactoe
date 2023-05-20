@@ -1,19 +1,17 @@
 .App{
     color: #fff;
-    display: grid;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     position: relative;
     text-align: center;
     height: 100vh;
 }
-
-.App .title{
-    font-size:24px;
-    margin-top: 30px;
-    font-weight: 200;
-    width: 100%;
-
+.App p{
+    font-weight: 100;
+    margin-top: 10px;
+    color: #2a9d8f;
 }
 
 
@@ -30,14 +28,21 @@
     gap: 10px;
 }
 
-.App .player-container{
-    width: 100%;
-    background-color: #264653;
-    border-radius: 16px;
-    border: 5px solid #1b3742;
-    padding: 24px;
+.App .player-containerX{
+    margin-bottom: 10px;
+    color: #2a9d8f;
+}
+
+.App .player-containerO{
+    margin-bottom: 10px;
     color: #e9c46a;
 }
+
+.App .player-containerX svg, .App .player-containerO svg{
+    width:50px;
+    height:50px;
+}
+
 
 
 

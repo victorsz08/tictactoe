@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { BoardGame } from "./BoardGame"
 import { BiReset } from "react-icons/bi"
+import { BsPersonCircle } from "react-icons/bs"
 
 export const ContainerTicTacToe = () => {
 
@@ -38,6 +39,7 @@ export const ContainerTicTacToe = () => {
 
         
     }
+    
 
     const checkDraw = () => {
         if(board.every(item => item !== "")) {
@@ -45,7 +47,8 @@ export const ContainerTicTacToe = () => {
         }
     }
 
-    useEffect(checkWinner, [board, checkDraw]);
+    useEffect(checkWinner)
+    useCallback(checkDraw, [board])
 
     const handleClick = (index) => {
         if(winner) {
@@ -70,11 +73,11 @@ export const ContainerTicTacToe = () => {
 
     return(
         <>
-        <h1 className="title">Jogo da Velha #</h1>
-        {currentPlayer && <div className="player-container">
+        {currentPlayer && <div className={`player-container${currentPlayer}`}><BsPersonCircle/>
         {currentPlayer === "X" ?
-            <h1>Vez do Player 1</h1> :
-            <h1>Vez do Player 2</h1>}
+
+            <h3>Vez do Player 1</h3> :
+            <h3>Vez do Player 2</h3>}
             </div>}
         <div className="container-game">
             
@@ -95,7 +98,9 @@ export const ContainerTicTacToe = () => {
         
         }
             <button onClick={resetGaming}>Resetar<BiReset/></button>
-        </div> }
+        </div>
+        }
+        <p>Desenvolvido por Victor Siqueira</p>
          
         
         
