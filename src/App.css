@@ -17,9 +17,11 @@
     width: 400px;
     height: 600px;
     border-radius: 16px;
-    padding: calc(50% - 370px);
+    padding: calc(50% - 260px);
     gap: 10px;
 }
+
+
 
 .App .container-game .board{
     display: grid;
