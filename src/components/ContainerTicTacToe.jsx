@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { BoardGame } from "./BoardGame"
-import { WinnerPlayer } from "./winnerPlayer";
+import { BiReset } from "react-icons/bi"
 
 export const ContainerTicTacToe = () => {
 
@@ -9,7 +9,7 @@ export const ContainerTicTacToe = () => {
     const emptyBoard = Array(9).fill("");
     const [board, setBoard] = useState(emptyBoard)
     const [currentPlayer, setCurrentPlayer] = useState("X")
-    const [winner, setWinner] = useState('')
+    const [winner, setWinner] = useState(null)
 
     const checkWinner = () => {
         const possibleWins = [
@@ -27,14 +27,25 @@ export const ContainerTicTacToe = () => {
 
         possibleWins.forEach(cells => {
             if(cells.every(cell => cell === "X"))
-            return setWinner("X")
+            return setWinner("1")
 
             if(cells.every(cell => cell === "O"))
-            return setWinner("O")
+            return setWinner("2")
+
+            
         })
+        checkDraw()
+
+        
     }
 
-    useEffect(checkWinner, [board]);
+    const checkDraw = () => {
+        if(board.every(item => item !== "")) {
+            setWinner("E")
+        }
+    }
+
+    useEffect(checkWinner, [board, checkDraw]);
 
     const handleClick = (index) => {
         if(winner) {
@@ -51,12 +62,22 @@ export const ContainerTicTacToe = () => {
         setCurrentPlayer(currentPlayer === "X" ? "O" : "X");
     }
 
-   
-
-    
+    const resetGaming = () =>{
+        setCurrentPlayer("X");
+        setBoard(emptyBoard);
+        setWinner(null);
+    }
 
     return(
+        <>
+        <h1 className="title">Jogo da Velha #</h1>
+        {currentPlayer && <div className="player-container">
+        {currentPlayer === "X" ?
+            <h1>Vez do Player 1</h1> :
+            <h1>Vez do Player 2</h1>}
+            </div>}
         <div className="container-game">
+            
             {board.map((item, index) => (
                 <BoardGame 
                 key={index}
@@ -65,7 +86,19 @@ export const ContainerTicTacToe = () => {
                 onClick={() => handleClick(index)}
                 />
             ))} 
-            {winner ? <WinnerPlayer win={winner}/> : ""}
         </div>
+        {winner && <div className="winner-container">
+            {winner === "E" ?
+            <h2>Empate!</h2>
+            :
+            <h2>Player {winner} Venceu!</h2> 
+        
+        }
+            <button onClick={resetGaming}>Resetar<BiReset/></button>
+        </div> }
+         
+        
+        
+        </>
     )
 }
