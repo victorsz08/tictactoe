@@ -1,0 +1,64 @@
+.App{
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: calc(50% - 300px);
+}
+
+
+.App .container-game{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    background-color: #264653;
+    width: 400px;
+    height: 600px;
+    border-radius: 16px;
+    padding: calc(50% - 370px);
+    gap: 10px;
+}
+
+.App .container-game .board{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    background-color: #003049;
+    height: 100px;
+    width: 100px;
+    font-size: 38px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.App .container-game .board:hover{
+    box-shadow: 2px 3px 12px #1b3742;
+}
+
+.App .container-game .boardX{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    background-color: #003049;
+    height: 100px;
+    width: 100px;
+    font-size: 38px;
+    border-radius: 12px;
+    color: #2a9d8f;
+    font-weight: 900;
+}
+
+
+.App .container-game .boardO{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    background-color: #003049;
+    height: 100px;
+    width: 100px;
+    font-size: 38px;
+    border-radius: 12px;
+    color: #e9c46a;
+}
